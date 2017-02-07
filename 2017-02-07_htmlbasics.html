@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+	Author: Godfrey Dande
+	Contains: Cool HTML basic demos
+	Credits: www.w3schools.com
+-->
+
+<head>
+
+<title>HTML BASICS</title>
+<style>
+	.center {
+	    margin: auto;
+	    width: 60%;
+	    border: 3px solid grey;
+	    padding: 10px;
+	}
+</style>
+
+</head>
+
+<body>
+
+<div class="center">
+<div style="background-color: grey;padding: none">
+<br/>
+<h1 style="text-align: center;color: white">SOME COOL HTML BASICS</h1>
+<p style="text-align: center;color: white" > Demos will run better if the Browser is online and location SSE API demo needs PHP interprator </p>
+<br/>
+</div>
+<hr/>
+
+
+<br/>
+<h1>CANVAS GRAPHICS DEMO</h1>
+<br/>
+<hr/>
+<p> A canvas is use to draw a gradient with JavaScript.</p>
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+// Create gradient
+var grd = ctx.createRadialGradient(75,50,5,90,60,100);
+grd.addColorStop(0,"red");
+grd.addColorStop(1,"white");
+
+// Fill with gradient
+ctx.fillStyle = grd;
+ctx.fillRect(10,10,150,80);
+</script>
+
+<br/>
+<h1>CANVAS GRAPHICS DEMO</h1>
+<br/>
+<hr/>
+
+<svg id = "svgdemo" width="300" height="200">
+  <polygon points="100,10 40,198 190,78 10,78 160,198"
+  style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
+</svg>
+<br/>
+<h1>SVG GRAPHICS DEMO</h1>
+<br/>
+<hr/>
+
+<audio controls loop>
+  <source src="http://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+  <source src="http://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+<br/>
+<h1>MULTIMEDIA AUDIO DEMO</h1>
+<br/>
+<hr/>
+
+<video id = "videodemo" width="320" height="240" controls autoplay>
+  <source src="http://www.w3schools.com/html/movie.mp4" type="video/mp4">
+  <source src="http://www.w3schools.com/html/movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+
+<br/>
+<h1>MULTIMEDIA VIDEO DEMO</h1>
+<br/>
+<hr/>
+
+<div id="map" style="width:400px;height:400px;background:yellow"></div>
+
+<script>
+function myMap() {
+var mapOptions = {
+    center: new google.maps.LatLng(51.5, -0.12),
+    zoom: 10,
+    mapTypeId: google.maps.MapTypeId.HYBRID
+}
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+
+<br/>
+<h1>GOOGLE MAPS API DEMO</h1>
+<br/>
+<hr/>
+
+<embed width="400" height="50" src=" http://www.w3schools.com/html/ bookmark.swf">
+<object width="400" height="50" data=" http://www.w3schools.com/html/ bookmark.swf"></object>
+
+<br/>
+<h1>PLUGIN DEMO</h1>
+<br/>
+<hr/>
+
+
+<p id="demo">Click the button to get your position.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<div id="mapholder"></div>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
+    +latlon+"&zoom=14&size=400x300&sensor=false";
+    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+}
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+</script>
+
+
+<br/>
+<h1>GOOGLE MAPS API DEMO</h1>
+<br/>
+<hr/>
+
+<style>
+#div1, #div2 {
+    float: left;
+    width: 100px;
+    height: 35px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+</style>
+
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+
+
+
+<h2>Drag and Drop</h2>
+<p>Drag the image back and forth between the two div elements.</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <img src="http://www.w3schools.com/html/img_w3slogo.gif" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+</div>
+
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<br/>
+<br/>
+<h1 style="float: none;">DRAG AND DROP API DEMO</h1>
+<br/>
+<hr/>
+
+
+<script>
+function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+        } else {
+            localStorage.clickcount = 1;
+        }
+        document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+</script>
+
+
+
+<p><button onclick="clickCounter()" type="button">Click me!</button></p>
+<div id="result"></div>
+<p>Click the button to see the counter increase.</p>
+<p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+
+<script>
+function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (sessionStorage.clickcount) {
+            sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+        } else {
+            sessionStorage.clickcount = 1;
+        }
+        document.getElementById("result1").innerHTML = "You have clicked the button " + sessionStorage.clickcount + " time(s) in this session.";
+    } else {
+        document.getElementById("result1").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+</script>
+
+
+<p><button onclick="clickCounter()" type="button">Click me!</button></p>
+<div id="result1"></div>
+<p>Click the button to see the counter increase.</p>
+<p>Close the browser tab (or window), and try again, and the counter is reset.</p>
+
+
+
+<br/>
+<h1>LOCAL STORAGE API DEMO</h1>
+<br/>
+<hr/>
+
+
+<!--br/>
+<h1>APPLICATION CACHE API DEMO</h1>
+<br/>
+<hr/-->
+
+<p>Count numbers: <output id="result3"></output></p>
+<button onclick="startWorker()">Start Worker</button> 
+<button onclick="stopWorker()">Stop Worker</button>
+
+<p><strong>Note:</strong> Internet Explorer 9 and earlier versions do not support Web Workers.</p>
+
+<script>
+var w;
+
+function startWorker() {
+    if(typeof(Worker) !== "undefined") {
+        if(typeof(w) == "undefined") {
+            w = new Worker("demo_workers.js");
+        }
+        w.onmessage = function(event) {
+            document.getElementById("result3").innerHTML = event.data;
+        };
+    } else {
+        document.getElementById("result3").innerHTML = "Sorry, your browser does not support Web Workers...";
+    }
+}
+
+function stopWorker() { 
+    w.terminate();
+    w = undefined;
+}
+</script>
+
+<br/>
+<h1>WEB WORKERS API DEMO</h1>
+<br/>
+<hr/>
+
+<?php
+header('Content-Type: text/event-stream');
+header('Cache-Control: no-cache');
+
+$time = date('r');
+echo "data: The server time is: {$time}\n\n";
+flush();
+?>
+
+
+
+<h1>Getting server updates</h1>
+<div id="result"></div>
+
+<script>
+if(typeof(EventSource) !== "undefined") {
+    var source = new EventSource("demo_sse.php");
+    source.onmessage = function(event) {
+        document.getElementById("result").innerHTML += event.data + "<br>";
+    };
+} else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+}
+</script>
+
+<br/>
+<h1> SSE API DEMO</h1>
+<br/>
+<hr/>
+
+
+</div>
+</body>
+</html>
