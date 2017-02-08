@@ -1,0 +1,65 @@
+/*
+	Author: Godfrey Dande
+	Contains: sassdemo.scss sass demo file
+	for: sassdemo.css
+	Date: 2017-02-08
+*/
+
+@mixin center-page($page-width) { /* declaring a mixin*/
+	
+	    margin: auto;
+	    width: $width;
+	    border: 3px solid grey;
+	    padding: 10px;
+}
+
+@mixin img-size($img-width, $img-height, $img-border){ 
+
+		 width:$img-width;
+		 height:$img-height;
+		 border:$img-border;
+}
+
+
+$width: 6 / 10 * 100%; /*use of variable and mathematical operation*/
+$c-width: 100%;
+$c-height:auto;
+$c-border: 1px solid #d3d3d3;
+
+
+	.center {
+
+	   @include center-page($width);
+
+	   		/* div is nested inside .center*/
+	   div {	
+	   		background-color: grey;
+	   		padding: none;
+
+	   		h1 {
+	   			text-align: center;
+	   			color: white;
+	   		}
+
+	   		p{
+	   			@extend h1;	 /*inheritance*/
+	   		}
+
+	   }
+
+	   p {	
+	   		text-align:center;
+	   }
+	   h2 {
+	   		@extend p;	 /*inheritance*/
+	   }
+
+
+	    img {
+	    
+			@include img-size( $c-width, $c-height, $c-border);
+		}
+
+
+
+	}

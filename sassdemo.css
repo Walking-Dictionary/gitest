@@ -1,0 +1,32 @@
+/*
+	Author: Godfrey Dande
+	Contains: sassdemo.scss sass demo file
+	for: sassdemo.css
+	Date: 2017-02-08
+*/
+/*use of variable and mathematical operation*/
+.center {
+  /* declaring a mixin*/
+  margin: auto;
+  width: 60%;
+  border: 3px solid grey;
+  padding: 10px;
+  /* div is nested inside .center*/ }
+  .center div {
+    background-color: grey;
+    padding: none; }
+    .center div h1, .center div p, .center div h2 {
+      text-align: center;
+      color: white; }
+    .center div p, .center div h2 {
+      /*inheritance*/ }
+  .center p, .center h2 {
+    text-align: center; }
+  .center h2 {
+    /*inheritance*/ }
+  .center img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #d3d3d3; }
+
+/*# sourceMappingURL=sassdemo.css.map */
